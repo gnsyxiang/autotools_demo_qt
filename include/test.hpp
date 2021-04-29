@@ -24,15 +24,16 @@
 #include <QPushButton>
 #include <QLabel>
 
-class Test: public QMainWindow {
+class Test: public QMainWindow
+{
     Q_OBJECT
 
 public:
-    Test();
+    Test(void);
 
 private:
     QLabel *bl;
-    QMainWindow *mw;
+    QPushButton *bt;
 };
 
 #endif

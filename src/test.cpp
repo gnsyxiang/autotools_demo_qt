@@ -21,14 +21,13 @@
 
 #include <QDebug>
 
-Test::Test()
+Test::Test(void)
 {
-    mw = new QMainWindow();
+    bl = new QLabel("我是标签", this);
+    bl->resize(80, 30);
+    bl->move(30, 20);
 
-    mw->resize(320, 240);
-    mw->move(400, 400);
-
-    mw->show();
-
-    qDebug("-------1");
+    bt = new QPushButton("我是按钮", this);
+    bt->resize(80, 30);
+    bt->move(30, 60);
 }

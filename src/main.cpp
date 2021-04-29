@@ -49,6 +49,10 @@ int main(int argc, char **argv)
     qDebug("-------0");
     Test test;
 
+    test.resize(320, 240);
+    test.move(400, 400);
+    test.show();
+
     return a.exec();
 }
 

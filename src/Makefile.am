@@ -20,36 +20,40 @@
 
 include $(top_srcdir)/res/autotroll.mk
 
-include_com  	=
-cppflags_com 	= $(QT_CPPFLAGS)
-cflags_com 		= $(QT_CFLAGS)
-cxxflags_com 	= $(QT_CXXFLAGS)
-ldflags_com 	= $(QT_LDFLAGS)
-ldadd_com 		= $(QT_LIBS)
+_include_com  	=
+_sources_com 	=
+_cppflags_com 	= $(QT_CPPFLAGS)
+_cflags_com 	= $(QT_CFLAGS)
+_cxxflags_com 	= $(QT_CXXFLAGS)
+_ldflags_com 	= $(QT_LDFLAGS)
+_ldadd_com 		= $(QT_LIBS)
 bin_PROGRAMS 	=
 
 # ---------------------
 # add necessary content
 # ---------------------
-include_com  	+= -I$(top_srcdir)/include
-cppflags_com 	+= $(CPPFLAGS_COM) \
-				   $(include_com)
+_include_com  	+= -I$(top_srcdir)/include
 
-ldflags_com 	+= $(BIN_LDFLAGS_COM) \
+_sources_com 	+= main.cpp test.cpp
+
+_cppflags_com 	+= $(CPPFLAGS_COM) \
+				   $(_include_com)
+
+_cflags_com 	+= $(CFLAGS_COM)
+
+_cxxflags_com 	+= $(CXXFLAGS_COM)
+
+_ldflags_com 	+= $(BIN_LDFLAGS_COM) \
 				   -Wl,-rpath=../lib \
 				   -Wl,-Bsymbolic
 
-qt_h_files 		= test.hpp
-qt_moc_files 	= test.moc.cpp
-sources 		= main.cpp test.cpp $(qt_h_files) $(qt_moc_files)
+_ldadd_com 		+= $(top_builddir)/include/libqt_h2cpp.la
 
 bin_PROGRAMS	+= main
-main_SOURCES 	= $(sources)
-main_CPPFLAGS  	= $(cppflags_com)
-main_CFLAGS  	= $(cflags_com)
-main_CXXFLAGS  	= $(cxxflags_com)
-main_LDFLAGS	= $(ldflags_com)
-main_LDADD   	= $(ldadd_com)
-
-BUILT_SOURCES = $(qt_moc_files)
+main_SOURCES 	= $(_sources_com)
+main_CPPFLAGS  	= $(_cppflags_com)
+main_CFLAGS  	= $(_cflags_com)
+main_CXXFLAGS  	= $(_cxxflags_com)
+main_LDFLAGS	= $(_ldflags_com)
+main_LDADD   	= $(_ldadd_com)
 

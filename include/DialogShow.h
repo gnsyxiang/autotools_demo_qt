@@ -2,7 +2,7 @@
  *
  * Release under GPLv-3.0.
  * 
- * @file    test.hpp
+ * @file    DialogShow.h
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    28/04 2021 20:01
@@ -17,23 +17,27 @@
  * 
  *     last modified: 28/04 2021 20:01
  */
-#ifndef __TEST_HPP_
-#define __TEST_HPP_
+#ifndef __AUTOTOOLS_DEMO_QT_INCLUDE_DIALOGSHOW_H_
+#define __AUTOTOOLS_DEMO_QT_INCLUDE_DIALOGSHOW_H_
 
-#include <QMainWindow>
+#include <QtWidgets/QDialog>
 #include <QPushButton>
 #include <QLabel>
 
-class Test: public QMainWindow
+namespace Ui {
+    class DialogShow;
+}
+
+class DialogShow: public QDialog
 {
     Q_OBJECT
 
 public:
-    Test(void);
+    explicit DialogShow(QWidget *parent = 0);
+    ~DialogShow();
 
 private:
-    QLabel *bl;
-    QPushButton *bt;
+    Ui::DialogShow *ui;
 };
 
 #endif

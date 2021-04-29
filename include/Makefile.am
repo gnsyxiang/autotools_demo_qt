@@ -18,6 +18,8 @@
 #     last modified: 28/04 2021 17:14
 # ===============================================================
 
+SUBDIRS = ui
+
 include $(top_srcdir)/res/autotroll.mk
 
 noinst_LTLIBRARIES = libqt_h2cpp.la
@@ -33,9 +35,9 @@ _ldadd_com 		= $(QT_LIBS)
 # ---------------------
 # add necessary content
 # ---------------------
-_include_com  	+=
+_include_com  	+= -I$(top_builddir)/include/ui
 
-_qt_h_files 	= test.moc.cpp
+_qt_h_files 	= DialogShow.moc.cpp
 _sources_com 	+= $(_qt_h_files)
 
 _cppflags_com 	+= $(CPPFLAGS_COM) \
@@ -47,7 +49,7 @@ _cxxflags_com 	+= $(CXXFLAGS_COM)
 
 _ldflags_com 	+= $(LIB_LDFLAGS_COM)
 
-_ldadd_com 		+=
+_ldadd_com 		+= $(top_builddir)/include/ui/libqt_ui2h.la
 
 libqt_h2cpp_la_SOURCES  = $(_sources_com)
 libqt_h2cpp_la_CPPFLAGS = $(_cppflags_com)
@@ -61,9 +63,10 @@ BUILT_SOURCES = $(_qt_h_files)
 # ------------------
 # make install files
 # ------------------
-NO_INSTALL_HEADERS_COM 	=
-noinst_HEADERS  		= $(NO_INSTALL_HEADERS_COM)
+_no_install_headers_com =
+noinst_HEADERS  		= $(_no_install_headers_com)
 
-INSTALL_HEADERS_COM 	=
+_install_headers_com 	=
 install_includedir 		= $(includedir)/@project_name@
-install_include_HEADERS = $(INSTALL_HEADERS_COM)
+install_include_HEADERS = $(_install_headers_com)
+

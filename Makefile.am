@@ -21,35 +21,39 @@
 include res/doxygen.am
 
 SUBDIRS = 3rd_lib \
+		  res \
 		  include \
 		  src \
-		  doc \
-		  res
+		  doc
 
-# --------
-# cppflags
-# --------
+# -----
+# flags
+# -----
 ACLOCAL_AMFLAGS 	= -I m4
-no_error_com 		= -Wno-error=deprecated-copy \
-					  -Wno-error=unused-result \
-					  -Wno-unused-parameter \
-					  -Wno-error=unused-but-set-variable
-CPPFLAGS_COM 		= -pipe -W -Wall -Werror \
-					  $(no_error_com) \
-					  $(ACLOCAL_AMFLAGS)
 
-LIB_CPPFLAGS_COM 	= -ffunction-sections \
+_no_error_com 		= -W -Wall -Werror \
+					  -Wno-error=deprecated-copy
+
+_remove_unuse_func 	= -ffunction-sections \
 					  -fdata-sections
 
-# -----------
-# lib ldflags
-# -----------
-LIB_LDFLAGS_COM = -rdynamic
+CPPFLAGS_COM 		= -pipe \
+					  $(_no_error_com) \
+					  $(ACLOCAL_AMFLAGS)
 
-# -----------
-# bin ldflags
-# -----------
-BIN_LDFLAGS_COM = -Wl,--gc-sections
+CFLAGS_COM 			= $(_remove_unuse_func)
+
+CXXFLAGS_COM 		= $(_remove_unuse_func)
+
+LIB_LDFLAGS_COM 	= -rdynamic
+
+BIN_LDFLAGS_COM 	= -Wl,--gc-sections
+
+export CPPFLAGS_COM
+export CFLAGS_COM
+export CXXFLAGS_COM
+export LIB_LDFLAGS_COM
+export BIN_LDFLAGS_COM
 
 # ------------------
 # make install files
@@ -61,13 +65,6 @@ dist_doc_DATA 		= $(install_files_com)
 # ---------------
 # make dist files
 # ---------------
-dist_files_com 	= autogen.sh
-EXTRA_DIST 		= $(dist_files_com)
+dist_files_com 		= autogen.sh
+EXTRA_DIST 			= $(dist_files_com)
 
-# ----------
-# export var
-# ----------
-export CPPFLAGS_COM
-export LIB_CPPFLAGS_COM
-export LIB_LDFLAGS_COM
-export BIN_LDFLAGS_COM

@@ -34,7 +34,6 @@ AC_PROG_MKDIR_P
 CHECK_PROJECT_INFO
 CHECK_VERSION_INFO
 CHECK_DOXYGEN
-CHECK_JAVA
 AT_WITH_QT
 
 # Checks for libraries.
@@ -49,6 +48,7 @@ AC_CONFIG_FILES([3rd_lib/Makefile
                  Makefile
                  doc/Makefile
                  include/Makefile
+                 include/ui/Makefile
                  res/Makefile
                  src/Makefile])
 AC_OUTPUT

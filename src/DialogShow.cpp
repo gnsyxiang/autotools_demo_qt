@@ -2,7 +2,7 @@
  * 
  * Release under GPLv-3.0.
  * 
- * @file    test.cpp
+ * @file    DialogShow.cpp
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    28/04 2021 20:06
@@ -17,17 +17,18 @@
  * 
  *     last modified: 28/04 2021 20:06
  */
-#include "test.hpp"
+#include "DialogShow.h"
 
-#include <QDebug>
+#include "DialogShow.ui.h"
 
-Test::Test(void)
+DialogShow::DialogShow(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::DialogShow)
 {
-    bl = new QLabel("我是标签", this);
-    bl->resize(80, 30);
-    bl->move(30, 20);
+    ui->setupUi(this);
+}
 
-    bt = new QPushButton("我是按钮", this);
-    bt->resize(80, 30);
-    bt->move(30, 60);
+DialogShow::~DialogShow()
+{
+    delete ui;
 }

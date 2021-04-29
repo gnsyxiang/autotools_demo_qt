@@ -21,5 +21,5 @@
 # ------------------
 # make install files
 # ------------------
-install_files_com 	=
-dist_doc_DATA 		= $(install_files_com)
+_install_files_com 	=
+dist_doc_DATA 		= $(_install_files_com)

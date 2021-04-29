@@ -21,7 +21,7 @@
 # ---------------
 # make dist files
 # ---------------
-DIST_FILES_COM 	= Doxyfile \
+_dist_files_com = Doxyfile \
 				  get_project_info.sh
-EXTRA_DIST 		= $(DIST_FILES_COM)
+EXTRA_DIST 		= $(_dist_files_com)
 

@@ -76,12 +76,14 @@ stamp-h1
 .libs/
 _build/
 install/
+conftest.dir/
+
+confdefs.h
+main
 
 *.o
 *.lo
 *.la
 *.moc.cpp
 *.ui.h
-
-main
 

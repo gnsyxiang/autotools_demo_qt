@@ -80,10 +80,13 @@ conftest.dir/
 
 confdefs.h
 main
+example/multi_language/multi_language
 
 *.o
 *.lo
 *.la
 *.moc.cpp
 *.ui.h
+*.qm
+*.ts
 

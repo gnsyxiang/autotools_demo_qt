@@ -27,7 +27,7 @@ _cflags_com 	= $(QT_CFLAGS)
 _cxxflags_com 	= $(QT_CXXFLAGS)
 _ldflags_com 	= $(QT_LDFLAGS)
 _ldadd_com 		= $(QT_LIBS)
-bin_PROGRAMS 	=
+noinst_PROGRAMS	=
 
 # ---------------------
 # add necessary content
@@ -54,7 +54,7 @@ _ldflags_com 	+= $(BIN_LDFLAGS_COM)
 _ldadd_com 		+=
 
 _target 				= multi_language
-bin_PROGRAMS			+= $(_target)
+noinst_PROGRAMS			+= $(_target)
 multi_language_SOURCES 	= $(_sources_com)
 multi_language_CPPFLAGS = $(_cppflags_com)
 multi_language_CFLAGS  	= $(_cflags_com)
@@ -71,13 +71,16 @@ BUILT_SOURCES 	= $(_qt_h_files) \
 _lupdate_ts 	= $(_target)_en_US.ts $(_target)_zh_CN.ts
 _lrelease_ts 	= $(_target)_en_US.qm $(_target)_zh_CN.qm
 
+_find_ts_files 	= `find $(top_srcdir)/example/multi_language -name "*.cpp" -o -name "*.h"`
+_find_ts_files 	+= `find $(top_builddir)/example/multi_language -name "*.cpp" -o -name "*.h"`
+
 lupdate_ts: $(_lupdate_ts)
 
 $(_target)_en_US.ts:
-	lupdate $(_sources_com) -ts $@
+	lupdate $(_find_ts_files) -ts $@
 
 $(_target)_zh_CN.ts:
-	lupdate $(_sources_com) -ts $@
+	lupdate $(_find_ts_files) -ts $@
 
 lrelease_ts: $(_lrelease_ts)
 

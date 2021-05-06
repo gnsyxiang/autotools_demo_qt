@@ -30,6 +30,8 @@ multiLanguage::multiLanguage(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+
+    ui->displayLabel->setText(tr("I'am a label"));
 }
 
 multiLanguage::~multiLanguage()
@@ -55,6 +57,7 @@ void multiLanguage::changeEvent(QEvent *e)
     switch (e->type()) {
         case QEvent::LanguageChange:
             ui->retranslateUi(this);
+            ui->displayLabel->setText(tr("I'am a label"));
             break;
         default:
             break;

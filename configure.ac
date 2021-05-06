@@ -47,6 +47,9 @@ AT_WITH_QT
 AC_CONFIG_FILES([3rd_lib/Makefile
                  Makefile
                  doc/Makefile
+                 example/Makefile
+                 example/thread/Makefile
+                 example/thread/QThread/Makefile
                  include/Makefile
                  include/ui/Makefile
                  res/Makefile

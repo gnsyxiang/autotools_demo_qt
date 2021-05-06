@@ -31,8 +31,7 @@ SUBDIRS = 3rd_lib \
 # -----
 ACLOCAL_AMFLAGS 	= -I m4
 
-_no_error_com 		= -W -Wall -Werror \
-					  -Wno-error=deprecated-copy
+_no_error_com 		= -W -Wall
 
 _remove_unuse_func 	= -ffunction-sections \
 					  -fdata-sections

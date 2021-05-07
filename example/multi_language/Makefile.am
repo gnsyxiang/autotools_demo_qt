@@ -65,30 +65,10 @@ multi_language_LDADD   	= $(_ldadd_com)
 BUILT_SOURCES 	= $(_qt_h_files) \
 				  $(_qt_ui_files)
 
-# ----------------
-# lupdate ts files
-# ----------------
-_lupdate_ts 	= $(_target)_en_US.ts $(_target)_zh_CN.ts
-_lrelease_ts 	= $(_target)_en_US.qm $(_target)_zh_CN.qm
-
-_find_ts_files 	= `find $(top_srcdir)/example/multi_language -name "*.cpp" -o -name "*.h"`
-_find_ts_files 	+= `find $(top_builddir)/example/multi_language -name "*.cpp" -o -name "*.h"`
-
-lupdate_ts: $(_lupdate_ts)
-
-$(_target)_en_US.ts:
-	lupdate $(_find_ts_files) -ts $@
-
-$(_target)_zh_CN.ts:
-	lupdate $(_find_ts_files) -ts $@
-
-lrelease_ts: $(_lrelease_ts)
-
-$(_target)_en_US.qm: $(_target)_en_US.ts
-	lrelease $<
-
-$(_target)_zh_CN.qm: $(_target)_zh_CN.ts
-	lrelease $<
-
-DISTCLEANFILES += $(_lupdate_ts) $(_lrelease_ts)
+# -----------------
+# find source files
+# -----------------
+current_path = `pwd`
+all_sources_files 	= `find $(top_srcdir)/example/multi_language -name "*.cpp" -o -name "*.h"`
+all_sources_files 	+= `find $(top_builddir)/example/multi_language -name "*.cpp" -o -name "*.h"`
 

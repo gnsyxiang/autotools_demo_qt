@@ -107,3 +107,31 @@ SUFFIXES = .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh .hpp \
 
 DISTCLEANFILES = $(BUILT_SOURCES)
 CLEANFILES = $(BUILT_SOURCES)
+
+# -------- #
+# language #
+# -------- #
+
+_lupdate_ts 	= $(_target)_en_US.ts $(_target)_zh_CN.ts
+_lrelease_ts 	= $(_target)_en_US.qm $(_target)_zh_CN.qm
+
+lupdate_ts: $(_lupdate_ts)
+	echo $(current_path)
+	echo `pwd`
+
+$(_target)_en_US.ts:
+	lupdate $(all_sources_files) -ts $@
+
+$(_target)_zh_CN.ts:
+	lupdate $(all_sources_files) -ts $@
+
+lrelease_ts: $(_lrelease_ts)
+
+$(_target)_en_US.qm: $(_target)_en_US.ts
+	lrelease $<
+
+$(_target)_zh_CN.qm: $(_target)_zh_CN.ts
+	lrelease $<
+
+DISTCLEANFILES += $(_lupdate_ts) $(_lrelease_ts)
+

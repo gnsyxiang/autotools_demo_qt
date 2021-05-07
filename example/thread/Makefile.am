@@ -5,7 +5,7 @@
 # @file    Makefile.am
 # @brief   
 # @author  gnsyxiang <gnsyxiang@163.com>
-# @date    06/05 2021 09:17
+# @date    06/05 2021 09:18
 # @version v0.0.1
 # 
 # @since    note
@@ -15,7 +15,7 @@
 #     NO.     Author              Date            Modified
 #     00      zhenquan.qiu        06/05 2021      create the file
 # 
-#     last modified: 06/05 2021 09:17
+#     last modified: 06/05 2021 09:18
 # ===============================================================
 
-SUBDIRS = multi_language thread
+SUBDIRS = QThread

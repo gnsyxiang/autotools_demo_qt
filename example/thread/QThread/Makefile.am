@@ -34,13 +34,13 @@ noinst_PROGRAMS	=
 # ---------------------
 _include_com  	+=
 
-_qt_ui_files 	= qthread_dialog.ui.h
-_qt_h_files 	= qthread_dialog.moc.cpp \
+_qt_ui_files 	= sort_dialog.ui.h
+_qt_h_files 	= sort_dialog.moc.cpp \
 				  bubble_sort_thread.moc.cpp \
 				  quick_sort_thread.moc.cpp \
 				  random_thread.moc.cpp
 _qt_cpp_files 	= main.cpp \
-				  qthread_dialog.cpp \
+				  sort_dialog.cpp \
 				  bubble_sort_thread.cpp \
 				  quick_sort_thread.cpp \
 				  random_thread.cpp

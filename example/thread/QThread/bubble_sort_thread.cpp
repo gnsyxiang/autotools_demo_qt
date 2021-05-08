@@ -44,12 +44,12 @@ void BubbleSortThread::_swap(int *a, int *b)
     *b = temp;
 }
 
-void BubbleSortThread::_bubble_sort(QVector<int> &random_vector)
+void BubbleSortThread::_bubble_sort(QVector<int> &list)
 {
-    for (int i = 0; i < random_vector.size(); i++) {
-        for (int j = 0; j + 1 < random_vector.size()  - i; j++) {
-            if (random_vector[j] > random_vector[j + 1]) {
-                _swap(&random_vector[j], &random_vector[j + 1]);
+    for (int i = 0; i < list.size(); i++) {
+        for (int j = 0; j + 1 < list.size()  - i; j++) {
+            if (list[j] > list[j + 1]) {
+                _swap(&list[j], &list[j + 1]);
             }
         }
     }
@@ -59,17 +59,17 @@ void BubbleSortThread::run()
 {
     hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
 
-    _bubble_sort(m_random_vector);
+    _bubble_sort(m_list);
 
     hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
 
     LOGD("interval_us: %lld \n", interval_us);
 
-    emit bubbleSortOver(m_random_vector);
+    emit finish(m_list);
 }
 
-void BubbleSortThread::getNumFromMainThread(QVector<int> random_vector)
+void BubbleSortThread::recvArray(QVector<int> list)
 {
-    m_random_vector = random_vector;
+    m_list = list;
 }
 

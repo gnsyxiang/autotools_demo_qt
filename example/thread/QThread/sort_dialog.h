@@ -2,7 +2,7 @@
  *
  * Release under GPLv-3.0.
  * 
- * @file    qthread_dialog.h
+ * @file    sort_dialog.h
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    06/05 2021 09:23
@@ -17,8 +17,8 @@
  * 
  *     last modified: 06/05 2021 09:23
  */
-#ifndef __EXAMPLE_QTHREAD_QTHREAD_DIALOG_H_
-#define __EXAMPLE_QTHREAD_QTHREAD_DIALOG_H_
+#ifndef __EXAMPLE_QTHREAD_SORT_DIALOG_H_
+#define __EXAMPLE_QTHREAD_SORT_DIALOG_H_
 
 #include <QDialog>
 
@@ -30,27 +30,21 @@ namespace Ui {
     class Dialog;
 }
 
-class QthreadDialog : public QDialog {
+class SortDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit QthreadDialog(QWidget *parent = nullptr);
-    virtual ~QthreadDialog();
+    explicit SortDialog(QWidget *parent = nullptr);
+    virtual ~SortDialog();
 
 signals:
     void setRandomNum(int cnt);
-    void startSort(QVector<int> random_vector);
-
-private slots:
-    void getRandomNumFromThread(QVector<int> random_vector);
-    void getRandomNumFromBubbleSortThread(QVector<int> random_vector);
-    void getRandomNumFromQuickSortThread(QVector<int> random_vector);
 
 private:
     Ui::Dialog          *ui;
-    RandomThread        *random_thread;
-    BubbleSortThread    *bubble_sort_thread;
-    QuickSortThread     *quick_sort_thread;
+    RandomThread        *m_random_thread;
+    BubbleSortThread    *m_bubble_sort_thread;
+    QuickSortThread     *m_quick_sort_thread;
 };
 
 #ifdef __cplusplus

@@ -19,14 +19,14 @@
  */
 #include <QApplication>
 
-#include "qthread_dialog.h"
+#include "sort_dialog.h"
 
 int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
 
-    QthreadDialog qthread_dialog;
-    qthread_dialog.show();
+    SortDialog sort_dialog;
+    sort_dialog.show();
 
     return a.exec();
 }

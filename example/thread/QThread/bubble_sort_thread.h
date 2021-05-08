@@ -31,20 +31,20 @@ public:
     virtual ~BubbleSortThread();
 
 signals:
-    void bubbleSortOver(QVector<int> random_vector);
+    void finish(QVector<int> list);
 
 public slots:
-    void getNumFromMainThread(QVector<int> random_vector);
+    void recvArray(QVector<int> list);
 
 protected:
     void run() override;
 
 private:
     void _swap(int *a, int *b);
-    void _bubble_sort(QVector<int> &random_vector);
+    void _bubble_sort(QVector<int> &list);
 
 private:
-    QVector<int> m_random_vector;
+    QVector<int> m_list;
 };
 
 #ifdef __cplusplus

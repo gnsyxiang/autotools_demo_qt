@@ -31,10 +31,10 @@ public:
     virtual ~QuickSortThread();
 
 signals:
-    void quickSortOver(QVector<int> random_vector);
+    void finish(QVector<int> list);
 
 public slots:
-    void getNumFromMainThread(QVector<int> random_vector);
+    void recvArray(QVector<int> list);
 
 protected:
     void run() override;
@@ -43,7 +43,7 @@ private:
     void _quicksort(int left, int right);
 
 private:
-    QVector<int> m_random_vector;
+    QVector<int> m_list;
 };
 
 #ifdef __cplusplus

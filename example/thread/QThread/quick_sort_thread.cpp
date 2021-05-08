@@ -43,26 +43,26 @@ void QuickSortThread::_quicksort(int left, int right)
         return ;
     }
  
-    stan = m_random_vector[left];
+    stan = m_list[left];
     i = left;
     j = right;
  
     while (i != j){
-        while (m_random_vector[j] >= stan && i < j){
+        while (m_list[j] >= stan && i < j){
             j--;
         }
-        while (m_random_vector[i] <= stan && i < j) {
+        while (m_list[i] <= stan && i < j) {
             i++;
         }
         if (j > i){
-            temp = m_random_vector[i];
-            m_random_vector[i] = m_random_vector[j];
-            m_random_vector[j] = temp;
+            temp = m_list[i];
+            m_list[i] = m_list[j];
+            m_list[j] = temp;
         }
     }
  
-    m_random_vector[left] = m_random_vector[i];
-    m_random_vector[i] = stan;
+    m_list[left] = m_list[i];
+    m_list[i] = stan;
  
     _quicksort(left, i - 1);
     _quicksort(i + 1, right);
@@ -73,17 +73,17 @@ void QuickSortThread::run()
 {
     hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
 
-    _quicksort(0, m_random_vector.size() - 1);
+    _quicksort(0, m_list.size() - 1);
 
     hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
 
     LOGD("interval_us: %lld \n", interval_us);
 
-    emit quickSortOver(m_random_vector);
+    emit finish(m_list);
 }
 
-void QuickSortThread::getNumFromMainThread(QVector<int> random_vector)
+void QuickSortThread::recvArray(QVector<int> list)
 {
-    m_random_vector = random_vector;
+    m_list = list;
 }
 

@@ -22,11 +22,18 @@
 #include "qthread_dialog.h"
 #include "qthread_dialog.ui.h"
 
+#include "hy_utils/hy_log.h"
+
+#define ALONE_DEBUG 1
+#define LOG_CATEGORY_TAG "qthread_dialog"
+
 QthreadDialog::QthreadDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+
+    HyLogCreate(HY_LOG_LEVEL_INFO, 512);
 
     random_thread = new RandomThread();
     bubble_sort_thread = new BubbleSortThread();
@@ -50,6 +57,8 @@ QthreadDialog::QthreadDialog(QWidget *parent) :
 
 QthreadDialog::~QthreadDialog()
 {
+    HyLogDestroy();
+
     delete ui;
 }
 

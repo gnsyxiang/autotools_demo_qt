@@ -77,10 +77,13 @@ stamp-h1
 _build/
 install/
 conftest.dir/
+3rd_lib/libhy_hal-build/
+3rd_lib/libhy_utils-build/
 
 confdefs.h
 main
 example/multi_language/multi_language
+example/thread/QThread/qthread_thread
 
 *.o
 *.lo
@@ -89,4 +92,9 @@ example/multi_language/multi_language
 *.ui.h
 *.qm
 *.ts
+
+
+
+
+
 

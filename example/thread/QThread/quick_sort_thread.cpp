@@ -21,6 +21,12 @@
 
 #include "quick_sort_thread.h"
 
+#include "hy_utils/hy_log.h"
+#include "hy_hal/hy_time.h"
+
+#define ALONE_DEBUG 1
+#define LOG_CATEGORY_TAG "quick_sort_thread"
+
 QuickSortThread::QuickSortThread(QObject *parent) :
     QThread(parent)
 {
@@ -63,33 +69,15 @@ void QuickSortThread::_quicksort(int left, int right)
  
 }
 
-#if 1
-#include <sys/time.h>
-
-static long long _getStartTimeUs(void)
-{
-    struct timeval time;
-    gettimeofday(&time, NULL);
-
-    return (time.tv_sec * 1000 * 1000 + time.tv_usec);
-}
-
-static long long _getIntervalFromStartTimeUs(long long start_us)
-{
-    struct timeval time;
-    gettimeofday(&time, NULL);
-
-    return (time.tv_sec * 1000 * 1000 + time.tv_usec - start_us);
-}
-#endif
-
 void QuickSortThread::run()
 {
-    long long start_us = _getStartTimeUs();
-    _quicksort(0, m_random_vector.size() - 1);
-    long long interval_us = _getIntervalFromStartTimeUs(start_us);
+    hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
 
-    qDebug() << interval_us / 1000.0 << "ms";
+    _quicksort(0, m_random_vector.size() - 1);
+
+    hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
+
+    LOGD("interval_us: %lld \n", interval_us);
 
     emit quickSortOver(m_random_vector);
 }

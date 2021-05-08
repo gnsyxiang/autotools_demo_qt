@@ -6,6 +6,12 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
+/* Have libhy_hal library */
+#undef HAVE_LIBHY_HAL
+
+/* Have libhy_utils library */
+#undef HAVE_LIBHY_UTILS
+
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 

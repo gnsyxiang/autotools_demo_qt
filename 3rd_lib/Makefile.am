@@ -18,9 +18,12 @@
 #     last modified: 28/04 2021 08:17
 # ===============================================================
 
-libs_3rd_dst_path 	= $(prefix)/lib
-libs_3rd_src_path 	= $(top_srcdir)/3rd_lib/install/lib
+libs_3rd_dst_path 	= $(prefix)
+libs_3rd_src_path 	= $(top_srcdir)/3rd_lib/install
 
 install-exec-hook:
+	${MKDIR_P} ${libs_3rd_dst_path};
+	-cp -ar ${libs_3rd_src_path}/* ${libs_3rd_dst_path};
 
 uninstall-hook:
+	rm -rf ${libs_3rd_dst_path}/*

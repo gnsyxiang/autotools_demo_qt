@@ -16,7 +16,7 @@
 * 三部曲编译源码并生成对应文件
 
 ```shell
-$ ./configure --prefix=`pwd`/install
+$ ./configure --prefix=`pwd`/install PKG_CONFIG_PATH=`pwd`/3rd_lib/install/lib/pkgconfig
 $ make
 $ make install
 ```
@@ -36,6 +36,7 @@ $ make install
 ```shell
 $ ./configure \
     --prefix=`pwd`/install \
+    PKG_CONFIG_PATH=`pwd`/3rd_lib/install/lib/pkgconfig \
     CC=arm-himix200-linux-gcc \
     CXX=arm-himix200-linux-g++ \
     --host=arm-himix200-linux \

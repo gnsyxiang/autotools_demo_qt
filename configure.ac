@@ -36,6 +36,9 @@ CHECK_VERSION_INFO
 CHECK_DOXYGEN
 AT_WITH_QT
 
+CHECK_LIBHY_UTILS
+CHECK_LIBHY_HAL
+
 # Checks for libraries.
 
 # Checks for header files.

@@ -20,11 +20,11 @@
 
 include res/doxygen.am
 
-SUBDIRS = 3rd_lib \
-		  res \
-		  include \
+SUBDIRS = include \
 		  src \
 		  example \
+		  3rd_lib \
+		  res \
 		  doc
 
 # -----

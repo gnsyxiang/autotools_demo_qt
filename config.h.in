@@ -18,6 +18,15 @@
 /* Define if the Qt framework is available. */
 #undef HAVE_QT
 
+/* select linux build system */
+#undef HAVE_SELECT_BUILD_SYSTEM_OS_LINUX
+
+/* select mac build system */
+#undef HAVE_SELECT_BUILD_SYSTEM_OS_MAC
+
+/* select window build system */
+#undef HAVE_SELECT_BUILD_SYSTEM_OS_WINDOW
+
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
 

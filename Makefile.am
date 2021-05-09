@@ -47,7 +47,11 @@ CXXFLAGS_COM 		= $(_remove_unuse_func)
 
 LIB_LDFLAGS_COM 	= -rdynamic
 
-BIN_LDFLAGS_COM 	= -Wl,--gc-sections
+BIN_LDFLAGS_COM 	=
+
+if COMPILE_SELECT_BUILD_SYSTEM_OS_LINUX
+BIN_LDFLAGS_COM 	+= -Wl,--gc-sections
+endif
 
 export CPPFLAGS_COM
 export CFLAGS_COM

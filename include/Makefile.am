@@ -49,7 +49,7 @@ _cxxflags_com 	+= $(CXXFLAGS_COM)
 
 _ldflags_com 	+= $(LIB_LDFLAGS_COM)
 
-_ldadd_com 		+= $(top_builddir)/include/ui/libqt_ui2h.la
+_ldadd_com 		+=
 
 libqt_h2cpp_la_SOURCES  = $(_sources_com)
 libqt_h2cpp_la_CPPFLAGS = $(_cppflags_com)

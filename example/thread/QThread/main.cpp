@@ -20,10 +20,15 @@
 #include <QApplication>
 
 #include "sort_dialog.h"
+#include "config.h"
 
 int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
+
+#ifdef HAVE_SELECT_BUILD_SYSTEM_OS_MAC
+    qRegisterMetaType<QVector<int>>("QVector<int>");
+#endif
 
     SortDialog sort_dialog;
     sort_dialog.show();

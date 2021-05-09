@@ -55,6 +55,7 @@ AC_CONFIG_FILES([3rd_lib/Makefile
                  example/multi_language/Makefile
                  example/thread/Makefile
                  example/thread/QThread/Makefile
+                 example/thread/moveToThread/Makefile
                  include/Makefile
                  include/ui/Makefile
                  res/Makefile

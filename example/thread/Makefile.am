@@ -18,4 +18,4 @@
 #     last modified: 06/05 2021 09:18
 # ===============================================================
 
-SUBDIRS = QThread
+SUBDIRS = QThread moveToThread

@@ -1,0 +1,55 @@
+/**
+ * 
+ * Release under GPLv-3.0.
+ * 
+ * @file    quick_sort.h
+ * @brief   
+ * @author  gnsyxiang <gnsyxiang@163.com>
+ * @date    07/05 2021 10:40
+ * @version v0.0.1
+ * 
+ * @since    note
+ * @note     note
+ * 
+ *     change log:
+ *     NO.     Author              Date            Modified
+ *     00      zhenquan.qiu        07/05 2021      create the file
+ * 
+ *     last modified: 07/05 2021 10:40
+ */
+#ifndef __EXAMPLE_MOVETOTHREAD_QUICK_SORT_H_
+#define __EXAMPLE_MOVETOTHREAD_QUICK_SORT_H_
+
+#include <QObject>
+#include <QVector>
+
+class QuickSort: public QObject{
+    Q_OBJECT
+
+public:
+    explicit QuickSort(QObject *parent = nullptr);
+    virtual ~QuickSort();
+
+public:
+    void working(QVector<int> list);
+
+signals:
+    void finish(QVector<int> list);
+
+private:
+    void _quicksort(int left, int right);
+
+private:
+    QVector<int> m_list;
+};
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+

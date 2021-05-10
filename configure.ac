@@ -43,8 +43,12 @@ CHECK_LIBHY_HAL
 # Checks for libraries.
 
 # Checks for header files.
+AC_CHECK_HEADERS([stdint.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
+AC_C_INLINE
+AC_TYPE_UINT32_T
+AC_TYPE_UINT8_T
 
 # Checks for library functions.
 
@@ -54,6 +58,7 @@ AC_CONFIG_FILES([3rd_lib/Makefile
                  example/Makefile
                  example/multi_language/Makefile
                  example/thread/Makefile
+                 example/thread/QRunnable/Makefile
                  example/thread/QThread/Makefile
                  example/thread/moveToThread/Makefile
                  include/Makefile

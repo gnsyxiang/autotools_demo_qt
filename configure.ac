@@ -47,6 +47,7 @@ AC_CHECK_HEADERS([stdint.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
+AC_CHECK_HEADER_STDBOOL
 AC_TYPE_UINT32_T
 AC_TYPE_UINT8_T
 
@@ -56,6 +57,7 @@ AC_CONFIG_FILES([3rd_lib/Makefile
                  Makefile
                  doc/Makefile
                  example/Makefile
+                 example/mouse/Makefile
                  example/multi_language/Makefile
                  example/thread/Makefile
                  example/thread/QRunnable/Makefile

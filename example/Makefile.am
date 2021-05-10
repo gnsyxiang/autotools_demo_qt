@@ -18,4 +18,4 @@
 #     last modified: 06/05 2021 09:17
 # ===============================================================
 
-SUBDIRS = multi_language thread
+SUBDIRS = multi_language thread mouse

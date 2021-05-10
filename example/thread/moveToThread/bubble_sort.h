@@ -35,10 +35,6 @@ public:
 
 signals:
     void finish(QVector<int> list);
-
-private:
-    void _swap(int *a, int *b);
-    void _bubble_sort(QVector<int> &list);
 };
 
 #ifdef __cplusplus

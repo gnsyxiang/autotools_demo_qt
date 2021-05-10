@@ -28,6 +28,20 @@
 #define ALONE_DEBUG 1
 #define LOG_CATEGORY_TAG "sort_dialog"
 
+static inline void _set_list_item(QListWidget *list, QVector<int> &vector)
+{
+    for (QVector<int>::iterator i = vector.begin(); i != vector.end(); ++i) {
+        list->addItem(QString::number(*i));
+    }
+}
+
+static inline void _delete_thread(QThread *thread)
+{
+    thread->quit();
+    thread->wait();
+    delete thread; //t3->deleteLater();
+}
+
 SortDialog::SortDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -57,47 +71,35 @@ SortDialog::SortDialog(QWidget *parent) :
             });
 
     connect(m_random, &Random::randomNumDown,
+            m_bubbleSort, &BubbleSort::working);
+    connect(m_random, &Random::randomNumDown,
+            m_quickSort, &QuickSort::working);
+    connect(m_random, &Random::randomNumDown,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                ui->randomList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->randomList, list);
 
-              t2->start();
-              t3->start();
+                t2->start();
+                t3->start();
             });
-    connect(m_random, &Random::randomNumDown, m_bubbleSort, &BubbleSort::working);
-    connect(m_random, &Random::randomNumDown, m_quickSort, &QuickSort::working);
 
     connect(m_bubbleSort, &BubbleSort::finish,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                ui->bubbleSortList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->bubbleSortList, list);
             });
     connect(m_quickSort, &QuickSort::finish,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                  ui->quickSortList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->quickSortList, list);
             });
 
-    connect(this, &SortDialog::destroy,
+    connect(this, &SortDialog::destroyed,
             this, [=](){
-              t1->quit(); 
-              t1->wait();
-              delete t1;
+                _delete_thread(t1);
+                _delete_thread(t2);
+                _delete_thread(t3);
 
-              t2->quit(); 
-              t2->wait();
-              delete t2;
-
-              t3->quit(); 
-              t3->wait();
-              delete t3; //t3->deleteLater();
-
-              delete m_random;
-              delete m_bubbleSort;
-              delete m_quickSort;
+                delete m_random;
+                delete m_bubbleSort;
+                delete m_quickSort;
             });
 }
 

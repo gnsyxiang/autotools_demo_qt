@@ -21,8 +21,10 @@
 
 #include "bubble_sort.h"
 
-#include "hy_utils/hy_log.h"
 #include "hy_hal/hy_time.h"
+
+#include "hy_utils/hy_sort.h"
+#include "hy_utils/hy_log.h"
 
 #define ALONE_DEBUG 1
 #define LOG_CATEGORY_TAG "bubble_sort"
@@ -36,30 +38,19 @@ BubbleSort::~BubbleSort()
 {
 }
 
-void BubbleSort::_swap(int *a, int *b)
+static hy_int32_t _swap_int_cb(void *src, void *dst)
 {
-    int temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
-}
+    hy_int32_t  *a = (hy_int32_t *)src;
+    hy_int32_t  *b = (hy_int32_t *)dst;
 
-void BubbleSort::_bubble_sort(QVector<int> &list)
-{
-    for (int i = 0; i < list.size(); i++) {
-        for (int j = 0; j + 1 < list.size()  - i; j++) {
-            if (list[j] > list[j + 1]) {
-                _swap(&list[j], &list[j + 1]);
-            }
-        }
-    }
+    return (*a > *b);
 }
 
 void BubbleSort::working(QVector<int> list)
 {
     hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
 
-    _bubble_sort(list);
+    HySortBubble(list.data(), list.size(), sizeof(list[0]),  _swap_int_cb);
 
     hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
 

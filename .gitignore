@@ -85,6 +85,7 @@ main
 example/multi_language/multi_language
 example/thread/QThread/qthread_thread
 example/thread/moveToThread/moveToThread_thread
+example/thread/QRunnable/qrunnable_thread
 
 *.o
 *.lo
@@ -96,6 +97,5 @@ example/thread/moveToThread/moveToThread_thread
 
 
 
-example/thread/QRunnable-bak/
 
 

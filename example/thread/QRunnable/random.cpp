@@ -22,6 +22,7 @@
 
 #include "random.h"
 
+#include "hy_utils/hy_math.h"
 #include "hy_utils/hy_log.h"
 
 #define ALONE_DEBUG 1
@@ -44,7 +45,8 @@ RandomRunnable::~RandomRunnable()
 static void _getRandomNum(int cnt, QVector<int> &random_vector)
 {
     for (int i = 0; i < cnt; ++i) {
-        int rand = QRandomGenerator::global()->bounded(cnt);
+        // int rand = QRandomGenerator::global()->bounded(cnt);
+        hy_uint32_t rand = HyMathGenerateRandom(cnt);
         random_vector.push_back(rand);
     }
 }

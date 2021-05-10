@@ -40,9 +40,6 @@ protected:
     void run() override;
 
 private:
-    void _quicksort(int left, int right);
-
-private:
     QVector<int> m_list;
 };
 

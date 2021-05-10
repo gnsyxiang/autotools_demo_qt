@@ -40,10 +40,6 @@ protected:
     void run() override;
 
 private:
-    void _swap(int *a, int *b);
-    void _bubble_sort(QVector<int> &list);
-
-private:
     QVector<int> m_list;
 };
 

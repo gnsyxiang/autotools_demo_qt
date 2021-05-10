@@ -35,12 +35,6 @@ public:
 
 signals:
     void finish(QVector<int> list);
-
-private:
-    void _quicksort(int left, int right);
-
-private:
-    QVector<int> m_list;
 };
 
 #ifdef __cplusplus

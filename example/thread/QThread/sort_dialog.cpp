@@ -27,6 +27,13 @@
 #define ALONE_DEBUG 1
 #define LOG_CATEGORY_TAG "sort_dialog"
 
+static inline void _set_list_item(QListWidget *list, QVector<int> &vector)
+{
+    for (QVector<int>::iterator i = vector.begin(); i != vector.end(); ++i) {
+        list->addItem(QString::number(*i));
+    }
+}
+
 SortDialog::SortDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -35,11 +42,12 @@ SortDialog::SortDialog(QWidget *parent) :
 
     HyLogCreate(HY_LOG_LEVEL_INFO, 512);
 
-    m_random_thread = new RandomThread(this);
-    m_bubble_sort_thread = new BubbleSortThread(this);
-    m_quick_sort_thread = new QuickSortThread(this);
+    m_random_thread = new RandomThread;
+    m_bubble_sort_thread = new BubbleSortThread;
+    m_quick_sort_thread = new QuickSortThread;
 
-    connect(this, &SortDialog::setRandomNum, m_random_thread, &RandomThread::getRandomNum);
+    connect(this, &SortDialog::setRandomNum,
+            m_random_thread, &RandomThread::getRandomNum);
     connect(ui->startButton, &QPushButton::clicked,
             this, [=](){
                 emit setRandomNum(10 * 1000);
@@ -47,28 +55,31 @@ SortDialog::SortDialog(QWidget *parent) :
             });
 
     connect(m_random_thread, &RandomThread::randomNumDown,
+            m_bubble_sort_thread, &BubbleSortThread::recvArray);
+    connect(m_random_thread, &RandomThread::randomNumDown,
+            m_quick_sort_thread, &QuickSortThread::recvArray);
+    connect(m_random_thread, &RandomThread::randomNumDown,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                ui->randomList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->randomList, list);
 
-              m_bubble_sort_thread->start();
-              m_quick_sort_thread->start();
+                m_bubble_sort_thread->start();
+                m_quick_sort_thread->start();
             });
-    connect(m_random_thread, &RandomThread::randomNumDown, m_bubble_sort_thread, &BubbleSortThread::recvArray);
-    connect(m_random_thread, &RandomThread::randomNumDown, m_quick_sort_thread, &QuickSortThread::recvArray);
 
     connect(m_bubble_sort_thread, &BubbleSortThread::finish,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                ui->bubbleSortList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->bubbleSortList, list);
             });
     connect(m_quick_sort_thread, &QuickSortThread::finish,
             this, [=](QVector<int> list){
-              for (QVector<int>::iterator i = list.begin(); i != list.end(); ++i) {
-                  ui->quickSortList->addItem(QString::number(*i));
-              }
+                _set_list_item(ui->quickSortList, list);
+            });
+
+    connect(this, &SortDialog::destroyed,
+            this, [=](){
+                delete m_random_thread;
+                delete m_bubble_sort_thread;
+                delete m_quick_sort_thread;
             });
 }
 

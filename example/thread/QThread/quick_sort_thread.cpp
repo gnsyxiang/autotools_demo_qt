@@ -21,8 +21,10 @@
 
 #include "quick_sort_thread.h"
 
-#include "hy_utils/hy_log.h"
 #include "hy_hal/hy_time.h"
+
+#include "hy_utils/hy_sort.h"
+#include "hy_utils/hy_log.h"
 
 #define ALONE_DEBUG 1
 #define LOG_CATEGORY_TAG "quick_sort_thread"
@@ -36,44 +38,19 @@ QuickSortThread::~QuickSortThread()
 {
 }
 
-void QuickSortThread::_quicksort(int left, int right)
+static hy_int32_t _swap_int_cb(void *src, void *dst)
 {
-    int i, j, stan, temp;
-    if (left > right){
-        return ;
-    }
- 
-    stan = m_list[left];
-    i = left;
-    j = right;
- 
-    while (i != j){
-        while (m_list[j] >= stan && i < j){
-            j--;
-        }
-        while (m_list[i] <= stan && i < j) {
-            i++;
-        }
-        if (j > i){
-            temp = m_list[i];
-            m_list[i] = m_list[j];
-            m_list[j] = temp;
-        }
-    }
- 
-    m_list[left] = m_list[i];
-    m_list[i] = stan;
- 
-    _quicksort(left, i - 1);
-    _quicksort(i + 1, right);
- 
+    hy_int32_t  *a = (hy_int32_t *)src;
+    hy_int32_t  *b = (hy_int32_t *)dst;
+
+    return *a - *b;
 }
 
 void QuickSortThread::run()
 {
     hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
 
-    _quicksort(0, m_list.size() - 1);
+    HySortQuick(m_list.data(), 0, m_list.size(), sizeof(m_list[0]),  _swap_int_cb);
 
     hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
 

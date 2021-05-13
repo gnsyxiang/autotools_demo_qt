@@ -21,7 +21,7 @@
 #include <QThread>
 
 #include "sort_dialog.h"
-#include "sort_dialog.ui.h"
+#include "ui_sort_dialog.h"
 
 #include "hy_utils/hy_log.h"
 

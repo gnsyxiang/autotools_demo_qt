@@ -87,7 +87,7 @@ SUFFIXES = .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh .hpp \
 	$(UIC) $< -o $@
 
 .ui.ui.h:
-	$(UIC) $< -o $@
+	$(UIC) $< -o ui_${@:.ui.h=}.h
 
 # --- #
 # RCC #

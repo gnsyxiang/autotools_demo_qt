@@ -23,7 +23,7 @@
 #include <QString>
 #include <QDebug>
 
-#include "multi_language.ui.h"
+#include "ui_multi_language.h"
 
 multiLanguage::multiLanguage(QWidget *parent) :
     QDialog(parent),

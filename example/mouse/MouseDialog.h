@@ -22,8 +22,6 @@
 
 #include <QDialog>
 
-#include "mouse.ui.h"
-
 namespace Ui {
     class Dialog;
 }

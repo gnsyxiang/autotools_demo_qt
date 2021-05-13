@@ -19,7 +19,7 @@
  */
 #include "DialogShow.h"
 
-#include "DialogShow.ui.h"
+#include "ui_DialogShow.h"
 
 DialogShow::DialogShow(QWidget *parent) :
     QDialog(parent),

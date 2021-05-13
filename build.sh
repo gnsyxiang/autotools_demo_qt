@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 
-set -x
+# set -x
+
+target=autotools_demo_qt
 
 data_disk_path=/opt/data
-top_path=${data_disk_path}/office/xia/autotools_demo_qt
-
-# project
-target_path=${top_path}
-prefix_path=${data_disk_path}/nfs/meian/meian
-
-# qt
-qt_path=${data_disk_path}/nfs/meian/qt-5.12.10
-
-# 3rd_lib
-lib_3rd_path=${data_disk_path}/nfs/meian/3rd-lib
 
 # gcc
 platform=arm-himix200-linux
 cross_gcc_path=${data_disk_path}/opt/toolchains/hisi-linux/${platform}/bin/${platform}-
+
+# cross lib on pc
+lib_3rd_path=${data_disk_path}/install/hisi-linux/arm-himix200-linux
+
+# target
+target_path=${data_disk_path}/office/xia/${target}
+prefix_path=${data_disk_path}/nfs/meian/app
 
 cd ${target_path} && ./autogen.sh && cd -
 
@@ -27,7 +25,7 @@ ${target_path}/configure \
     CXX=${cross_gcc_path}g++ \
     --host=${platform} \
     \
-    --with-qt=${qt_path}/bin \
+    --with-qt=${lib_3rd_path}/bin \
     PKG_CONFIG_PATH=${lib_3rd_path}/lib/pkgconfig
 
 make -j4; make install

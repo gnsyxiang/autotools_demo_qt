@@ -17,13 +17,16 @@
  * 
  *     last modified: 06/05 2021 11:02
  */
-#include "multi_language.h"
-
 #include <QApplication>
 #include <QString>
 #include <QDebug>
 
-#include "ui_multi_language.h"
+#include "multi_language.h"
+#ifdef AUTOTOOLS_COMPILE
+#   include "multi_language.ui.h"
+#else
+#   include "ui_multi_language.h"
+#endif
 
 multiLanguage::multiLanguage(QWidget *parent) :
     QDialog(parent),

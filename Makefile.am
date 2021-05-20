@@ -20,11 +20,12 @@
 
 include res/doxygen.am
 
-SUBDIRS = include \
-		  src \
-		  example \
+SUBDIRS = \
 		  3rd_lib \
 		  res \
+		  include \
+		  src \
+		  example \
 		  doc
 
 # -----
@@ -37,8 +38,11 @@ _no_error_com 		= -W -Wall
 _remove_unuse_func 	= -ffunction-sections \
 					  -fdata-sections
 
+_define_com 		= -DAUTOTOOLS_COMPILE
+
 CPPFLAGS_COM 		= -pipe \
 					  $(_no_error_com) \
+					  $(_define_com) \
 					  $(ACLOCAL_AMFLAGS)
 
 CFLAGS_COM 			= $(_remove_unuse_func)

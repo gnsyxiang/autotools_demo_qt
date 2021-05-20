@@ -19,7 +19,11 @@
  */
 #include "DialogShow.h"
 
-#include "ui_DialogShow.h"
+#ifdef AUTOTOOLS_COMPILE
+#   include "DialogShow.ui.h"
+#else
+#   include "ui_DialogShow.h"
+#endif
 
 DialogShow::DialogShow(QWidget *parent) :
     QDialog(parent),

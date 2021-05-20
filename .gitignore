@@ -83,7 +83,7 @@ conftest.dir/
 confdefs.h
 
 *.moc.cpp
-ui_*.h
+*.ui.h
 *.qm
 *.ts
 

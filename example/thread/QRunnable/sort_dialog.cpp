@@ -22,7 +22,11 @@
 #include <QThreadPool>
 
 #include "sort_dialog.h"
-#include "ui_sort_dialog.h"
+#ifdef AUTOTOOLS_COMPILE
+#   include "sort_dialog.ui.h"
+#else
+#   include "ui_sort_dialog.h"
+#endif
 
 #include "hy_utils/hy_log.h"
 

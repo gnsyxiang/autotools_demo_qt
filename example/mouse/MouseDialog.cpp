@@ -21,7 +21,11 @@
 #include <QDebug>
 
 #include "MouseDialog.h"
-#include "ui_mouse.h"
+#ifdef AUTOTOOLS_COMPILE
+#   include "mouse.ui.h"
+#else
+#   include "ui_mouse.h"
+#endif
 
 MouseDialog::MouseDialog(QWidget *parent) :
     QDialog(parent),

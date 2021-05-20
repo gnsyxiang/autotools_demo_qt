@@ -19,15 +19,24 @@
  */
 #include <QApplication>
 #include <QDebug>
+#include <QFile>
 
 #include "DialogShow.h"
+#include "utils.h"
 
 int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
 
-    DialogShow dialog_show;
+    QFile file(UTILS_QSS_PATH"demo.qss");
+    if (file.open(QFile::ReadOnly)) {
+        qDebug() << "use qss file";
+        QString styleSheet = QLatin1String(file.readAll());
+        a.setStyleSheet(styleSheet);
+        file.close();
+    }
 
+    DialogShow dialog_show;
     dialog_show.show();
 
     return a.exec();

@@ -62,6 +62,8 @@ AC_CONFIG_FILES([3rd_lib/Makefile
                  example/thread/moveToThread/Makefile
                  include/Makefile
                  res/Makefile
+                 res/img/Makefile
+                 res/qss/Makefile
                  res/ui/Makefile
                  src/Makefile])
 AC_OUTPUT

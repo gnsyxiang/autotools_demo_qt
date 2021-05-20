@@ -18,8 +18,6 @@
 #     last modified: 28/04 2021 17:14
 # ===============================================================
 
-SUBDIRS = ui
-
 include $(top_srcdir)/res/autotroll.mk
 
 noinst_LTLIBRARIES = libqt_h2cpp.la
@@ -35,7 +33,7 @@ _ldadd_com 		= $(QT_LIBS)
 # ---------------------
 # add necessary content
 # ---------------------
-_include_com  	+= -I$(top_builddir)/include/ui
+_include_com  	+= -I$(top_builddir)/res/ui
 
 _qt_h_files 	= DialogShow.moc.cpp
 _sources_com 	+= $(_qt_h_files)

@@ -33,7 +33,7 @@ bin_PROGRAMS 	=
 # add necessary content
 # ---------------------
 _include_com  	+= -I$(top_srcdir)/include \
-				   -I$(top_builddir)/include/ui
+				   -I$(top_builddir)/res/ui
 
 _sources_com 	+= main.cpp \
 				   DialogShow.cpp

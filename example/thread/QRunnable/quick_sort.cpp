@@ -20,15 +20,11 @@
 #include <QDebug>
 #include <QThread>
 
+#include <hy_log/hy_log.h>
+
+#include <hy_utils/hy_sort.h>
+
 #include "quick_sort.h"
-
-#include "hy_hal/hy_time.h"
-
-#include "hy_utils/hy_sort.h"
-#include "hy_utils/hy_log.h"
-
-#define ALONE_DEBUG 1
-#define LOG_CATEGORY_TAG "quick_sort"
 
 QuickSortRunnable::QuickSortRunnable(QObject *parent) :
     QThread(parent),
@@ -41,10 +37,10 @@ QuickSortRunnable::~QuickSortRunnable()
 {
 }
 
-static hy_int32_t _swap_int_cb(void *src, void *dst)
+static hy_s32_t _swap_int_cb(void *src, void *dst)
 {
-    hy_int32_t  *a = (hy_int32_t *)src;
-    hy_int32_t  *b = (hy_int32_t *)dst;
+    hy_s32_t  *a = (hy_s32_t *)src;
+    hy_s32_t  *b = (hy_s32_t *)dst;
 
     return *a - *b;
 }
@@ -53,13 +49,7 @@ void QuickSortRunnable::run()
 {
     LOGD("thread id: %p \n", QThread::currentThreadId());
 
-    hy_uint64_t start_us = HyTimeGetCurrentTime2Us();
-
     HySortQuick(m_list.data(), 0, m_list.size(), sizeof(m_list[0]),  _swap_int_cb);
-
-    hy_uint64_t interval_us = HyTimeGetTimeInterval(start_us);
-
-    LOGD("interval_us: %lld \n", interval_us);
 
     emit finish(m_list);
 }

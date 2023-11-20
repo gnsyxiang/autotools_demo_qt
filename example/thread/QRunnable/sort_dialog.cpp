@@ -21,17 +21,16 @@
 #include <QThread>
 #include <QThreadPool>
 
+#include <hy_log/hy_log.h>
+
+#include <hy_utils/hy_mem.h>
+
 #include "sort_dialog.h"
 #ifdef AUTOTOOLS_COMPILE
 #   include "sort_dialog.ui.h"
 #else
 #   include "ui_sort_dialog.h"
 #endif
-
-#include "hy_utils/hy_log.h"
-
-#define ALONE_DEBUG 1
-#define LOG_CATEGORY_TAG "sort_dialog"
 
 static inline void _set_list_item(QListWidget *list, QVector<int> &vector)
 {
@@ -46,7 +45,14 @@ SortDialog::SortDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    HyLogCreate(HY_LOG_LEVEL_INFO, 512);
+    HyLogConfig_s log_c;
+    HY_MEMSET(&log_c, sizeof(HyLogConfig_s));
+    log_c.port                      = 56789;
+    log_c.fifo_len                  = 10 * 1024;
+    log_c.config_file               = "../res/hy_log/zlog.conf";
+    log_c.save_c.level              = HY_LOG_LEVEL_INFO;
+    log_c.save_c.output_format      = HY_LOG_OUTFORMAT_ALL_NO_PID_ID;
+    HyLogInit(&log_c);
 
     connect(ui->startButton, &QPushButton::clicked,
             this, &SortDialog::handle_start_clicked);
@@ -56,7 +62,7 @@ SortDialog::SortDialog(QWidget *parent) :
 
 SortDialog::~SortDialog()
 {
-    HyLogDestroy();
+    HyLogDeInit();
 
     delete ui;
 }

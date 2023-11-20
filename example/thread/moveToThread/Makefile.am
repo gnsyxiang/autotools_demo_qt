@@ -59,6 +59,14 @@ _ldflags_com 	+= $(BIN_LDFLAGS_COM)
 
 _ldadd_com 		+=
 
+if COMPILE_LIBHY_UTILS
+_ldadd_com      += $(HY_UTILS_LIBS)
+endif
+
+if COMPILE_LIBHY_LOG
+_ldadd_com      += $(HY_LOG_LIBS)
+endif
+
 _target 				= moveToThread_thread
 noinst_PROGRAMS			+= $(_target)
 moveToThread_thread_SOURCES 	= $(_sources_com)

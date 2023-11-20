@@ -22,6 +22,7 @@
 # ignore for vim
 #---------------
 .SpaceVim.d/
+.cache/
 .clang
 .ccls
 .ccls-cache

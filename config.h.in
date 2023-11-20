@@ -3,13 +3,25 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
+/* Define if the system has hy_log */
+#undef HAVE_HY_LOG
+
+/* Define to 1 if you have the <hy_log/hy_log.h> header file. */
+#undef HAVE_HY_LOG_HY_LOG_H
+
+/* Define if the system has hy_utils */
+#undef HAVE_HY_UTILS
+
+/* Define to 1 if you have the <hy_utils/hy_utils.h> header file. */
+#undef HAVE_HY_UTILS_HY_UTILS_H
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Have libhy_hal library */
-#undef HAVE_LIBHY_HAL
+/* Define to 1 if you have the `hy_log' library (-lhy_log). */
+#undef HAVE_LIBHY_LOG
 
-/* Have libhy_utils library */
+/* Define to 1 if you have the `hy_utils' library (-lhy_utils). */
 #undef HAVE_LIBHY_UTILS
 
 /* Define to 1 if you have the <memory.h> header file. */

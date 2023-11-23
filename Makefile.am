@@ -5,7 +5,7 @@
 # @file    Makefile.am
 # @brief   
 # @author  gnsyxiang <gnsyxiang@163.com>
-# @date    27/04 2021 20:19
+# @date    05/03 2021 10:32
 # @version v0.0.1
 # 
 # @since    note
@@ -13,66 +13,60 @@
 # 
 #     change log:
 #     NO.     Author              Date            Modified
-#     00      zhenquan.qiu        27/04 2021      create the file
+#     00      zhenquan.qiu        05/03 2021      create the file
 # 
-#     last modified: 27/04 2021 20:19
+#     last modified: 05/03 2021 10:32
 # ===============================================================
 
 include res/doxygen.am
 
 SUBDIRS = \
-		  3rd_lib \
-		  res \
-		  include \
-		  src \
-		  example \
-		  doc
+          include       \
+          src           \
+          doc           \
+          example       \
+          res           \
+          build-script
 
-# -----
-# flags
-# -----
-ACLOCAL_AMFLAGS 	= -I m4
-
-_no_error_com 		= -W -Wall
-
-_remove_unuse_func 	= -ffunction-sections \
-					  -fdata-sections
-
-_define_com 		= -DAUTOTOOLS_COMPILE
-
-CPPFLAGS_COM 		= -pipe \
-					  $(_no_error_com) \
-					  $(_define_com) \
-					  $(ACLOCAL_AMFLAGS)
-
-CFLAGS_COM 			= $(_remove_unuse_func)
-
-CXXFLAGS_COM 		= $(_remove_unuse_func)
-
-LIB_LDFLAGS_COM 	= -rdynamic
-
-BIN_LDFLAGS_COM 	=
-
-if COMPILE_SELECT_BUILD_SYSTEM_OS_LINUX
-BIN_LDFLAGS_COM 	+= -Wl,--gc-sections
+if COMPILE_LIBCUNIT
+SUBDIRS += test
 endif
 
-export CPPFLAGS_COM
-export CFLAGS_COM
-export CXXFLAGS_COM
-export LIB_LDFLAGS_COM
-export BIN_LDFLAGS_COM
+# ------------------
+# defining variables
+# ------------------
+_install_files_com  =
+_dist_files_com     =
+include_com         =
+ldadd_com           =
+
+ACLOCAL_AMFLAGS     = -I m4
+include_com         += $(ACLOCAL_AMFLAGS)
+
+export include_com
+export ldadd_com 
+
+# ---------------------
+# add necessary content
+# ---------------------
+
 
 # ------------------
 # make install files
 # ------------------
-install_files_com 	= LICENSE \
-					  README.md
-dist_doc_DATA 		= $(install_files_com)
+_install_files_com  += \
+                       LICENSE                  \
+                       README.md
+dist_doc_DATA       = $(_install_files_com)
+pkgconfig_DATA      = @project_name@.pc
 
 # ---------------
 # make dist files
 # ---------------
-dist_files_com 		= autogen.sh
-EXTRA_DIST 			= $(dist_files_com)
+_dist_files_com     += \
+                       autogen.sh               \
+                       build.sh                 \
+                       @project_name@.pc.in
+EXTRA_DIST          = $(_dist_files_com)
 
+DISTCLEANFILES = @project_name@.pc

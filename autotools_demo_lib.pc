@@ -1,0 +1,17 @@
+prefix=/mnt/nfs/pc/pc-chip
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: autotools_demo_lib
+Version: 0.7.0_16_gfc4aaaa
+URL: https://gitee.com/gnsyxiang/autotools_demo_lib.git
+Description: autotools demo for lib
+
+Requires:
+Requires.private:
+Conflicts:
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -lautotools_demo_lib
+Libs.private:

@@ -1,43 +1,86 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+/* Define to 1 if you have the <CUnit/CUnit.h> header file. */
+#undef HAVE_CUNIT_CUNIT_H
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
-/* Define if the system has hy_log */
-#undef HAVE_HY_LOG
-
-/* Define to 1 if you have the <hy_log/hy_log.h> header file. */
-#undef HAVE_HY_LOG_HY_LOG_H
-
-/* Define if the system has hy_utils */
-#undef HAVE_HY_UTILS
-
-/* Define to 1 if you have the <hy_utils/hy_utils.h> header file. */
-#undef HAVE_HY_UTILS_HY_UTILS_H
+/* enable debug info */
+#undef HAVE_ENABLE_DEBUG_INFO
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define to 1 if you have the `hy_log' library (-lhy_log). */
-#undef HAVE_LIBHY_LOG
+/* Define to 1 if you have the `cunit' library (-lcunit). */
+#undef HAVE_LIBCUNIT
 
-/* Define to 1 if you have the `hy_utils' library (-lhy_utils). */
-#undef HAVE_LIBHY_UTILS
+/* Define to 1 if your system has a GNU libc compatible `malloc' function, and
+   to 0 otherwise. */
+#undef HAVE_MALLOC
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
-/* Define if the Qt framework is available. */
-#undef HAVE_QT
+/* Define if the pthread has pthread_setname_np */
+#undef HAVE_PTHREAD_SETNAME_NP
 
-/* select linux build system */
-#undef HAVE_SELECT_BUILD_SYSTEM_OS_LINUX
+/* select at32f4xx chip */
+#undef HAVE_SELECT_CHIP_AT32F4XX
 
-/* select mac build system */
-#undef HAVE_SELECT_BUILD_SYSTEM_OS_MAC
+/* select esp32 chip */
+#undef HAVE_SELECT_CHIP_ESP32
 
-/* select window build system */
-#undef HAVE_SELECT_BUILD_SYSTEM_OS_WINDOW
+/* select MC6810E chip */
+#undef HAVE_SELECT_CHIP_MC6810E
+
+/* select mx6ull chip */
+#undef HAVE_SELECT_CHIP_MX6ULL
+
+/* select pc chip */
+#undef HAVE_SELECT_CHIP_PC
+
+/* select rk3568 chip */
+#undef HAVE_SELECT_CHIP_RK3568
+
+/* select stm32h7xx chip */
+#undef HAVE_SELECT_CHIP_STM32H7XX
+
+/* select SV823 chip */
+#undef HAVE_SELECT_CHIP_SV823
+
+/* select cn language */
+#undef HAVE_SELECT_LANGUAGE_CN
+
+/* select en language */
+#undef HAVE_SELECT_LANGUAGE_EN
+
+/* select arterytek vender */
+#undef HAVE_SELECT_VENDER_ARTERYTEK
+
+/* select eeasytech vender */
+#undef HAVE_SELECT_VENDER_EEASYTECH
+
+/* select esp32 vender */
+#undef HAVE_SELECT_VENDER_ESP32
+
+/* select fullhan vender */
+#undef HAVE_SELECT_VENDER_FULLHAN
+
+/* select hdhc vender */
+#undef HAVE_SELECT_VENDER_HDHC
+
+/* select nxp vender */
+#undef HAVE_SELECT_VENDER_NXP
+
+/* select pc vender */
+#undef HAVE_SELECT_VENDER_PC
+
+/* select rock-chips vender */
+#undef HAVE_SELECT_VENDER_ROCK_CHIPS
+
+/* select stm32 vender */
+#undef HAVE_SELECT_VENDER_STM32
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
@@ -60,8 +103,8 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to 1 if the system has the type `_Bool'. */
-#undef HAVE__BOOL
+/* Define if the system has cunit */
+#undef HAVE_cunit
 
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
@@ -93,8 +136,5 @@
 /* Version number of package */
 #undef VERSION
 
-/* Define to `__inline__' or `__inline' if that's what the C compiler
-   calls it, or to nothing if 'inline' is not supported under any name.  */
-#ifndef __cplusplus
-#undef inline
-#endif
+/* Define to rpl_malloc if the replacement function should be used. */
+#undef malloc

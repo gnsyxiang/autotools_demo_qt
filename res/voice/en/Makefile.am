@@ -5,7 +5,7 @@
 # @file    Makefile.am
 # @brief   
 # @author  gnsyxiang <gnsyxiang@163.com>
-# @date    05/03 2021 10:35
+# @date    23/03 2022 19:12
 # @version v0.0.1
 # 
 # @since    note
@@ -13,30 +13,34 @@
 # 
 #     change log:
 #     NO.     Author              Date            Modified
-#     00      zhenquan.qiu        05/03 2021      create the file
+#     00      zhenquan.qiu        23/03 2022      create the file
 # 
-#     last modified: 05/03 2021 10:35
+#     last modified: 23/03 2022 19:12
 # ===============================================================
 
 # ------------------
 # defining variables
 # ------------------
-_no_install_headers_com =
-_install_headers_com    =
-
-install_includedir      = $(includedir)/@project_name@
+_install_files_com  =
+_dist_file_com      =
+voicedir            = $(prefix)/res/voice
+voice_DATA          =
 
 # ---------------------
 # add necessary content
 # ---------------------
-_no_install_headers_com +=
 
-_install_headers_com    += \
-                           hy_calc.h    \
-                           hy_module.h
+# ---------------
+# make dist files
+# ---------------
+_dist_file_com      += \
+                       demo.pcm
+
+EXTRA_DIST          = $(_dist_file_com)
 
 # ------------------
 # make install files
 # ------------------
-noinst_HEADERS          = $(_no_install_headers_com)
-install_include_HEADERS = $(_install_headers_com)
+_install_files_com  += demo.pcm
+voice_DATA          += $(_install_files_com)
+

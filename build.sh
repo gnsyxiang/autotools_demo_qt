@@ -220,18 +220,19 @@ cd ${cur_path} && ./autogen.sh && cd -
 
 export STRIP=${cross_gcc_path}strip
 ${cur_path}/configure                                       \
-    CC=${cross_gcc_path}gcc                                 \
-    CXX=${cross_gcc_path}g++                                \
+    CC="${cross_gcc_path}"gcc                               \
+    CXX="${cross_gcc_path}"g++                              \
     CPPFLAGS="${cppflag}"                                   \
     CFLAGS="${cflag}"                                       \
     CXXFLAGS="${cxxflag}"                                   \
     LDFLAGS="${ldflag}"                                     \
     LIBS="${lib}"                                           \
     PKG_CONFIG_PATH="${install_path}/lib/pkgconfig"         \
-    --prefix=${install_path}                                \
+    --prefix="${install_path}"                              \
     --build=                                                \
-    --host=${host}                                          \
-    --target=${host}                                        \
+    --host="${host}"                                        \
+    --target="${host}"                                      \
+    --with-qt="${install_path}"/bin                         \
     \
     ${configure_param}
 

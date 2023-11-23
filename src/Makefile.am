@@ -27,11 +27,11 @@ _no_error_com   =
 _define_com     =
 _include_com    = $(include_com)
 _sources_com    =
-_cppflags_com   =
-_cflags_com     =
-_cxxflags_com   =
-_ldflags_com    =
-_ldadd_com      =
+_cppflags_com   = $(QT_CPPFLAGS)
+_cflags_com     = $(QT_CFLAGS)
+_cxxflags_com   = $(QT_CXXFLAGS)
+_ldflags_com    = $(QT_LDFLAGS)
+_ldadd_com      = $(QT_LIBS)
 
 # ---------------------
 # add necessary content
@@ -40,11 +40,12 @@ _no_error_com   +=
 
 _define_com     +=
 
-_include_com    += -I$(top_srcdir)/include
+_include_com    += \
+                   -I$(top_srcdir)/res/ui \
+                   -I$(top_srcdir)/include
 
 _sources_com    += \
-                   hy_calc.c    \
-                   hy_module.c
+                   DialogShow.cpp
 
 _cppflags_com   += \
                    $(_no_error_com) \
@@ -57,9 +58,11 @@ _cxxflags_com   +=
 
 _ldflags_com    += -version-info @current@:@revision@:@age@
 
-if !COMPILE_DEBUG_INFO
-_ldflags_com    += -export-symbols-regex 'Hy*'
-endif
+# if !COMPILE_DEBUG_INFO
+# _ldflags_com    += -export-symbols-regex 'Hy*'
+# endif
+
+_ldadd_com      += $(top_builddir)/include/libqt_h2cpp.la
 
 _ldadd_com      += $(ldadd_com)
 
@@ -69,4 +72,3 @@ lib@project_name@_la_CFLAGS     = $(_cflags_com)
 lib@project_name@_la_CXXFLAGS   = $(_cxxflags_com)
 lib@project_name@_la_LDFLAGS    = $(_ldflags_com)
 lib@project_name@_la_LIBADD     = $(_ldadd_com)
-

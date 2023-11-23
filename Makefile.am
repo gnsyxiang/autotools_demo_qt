@@ -19,13 +19,14 @@
 # ===============================================================
 
 include res/doxygen.am
+include $(top_srcdir)/res/autotroll.mk
 
 SUBDIRS = \
-          include       \
-          src           \
-          doc           \
-          example       \
-          res           \
+          res \
+          include \
+          src \
+          doc \
+          example \
           build-script
 
 if COMPILE_LIBCUNIT
@@ -69,4 +70,4 @@ _dist_files_com     += \
                        @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 
-DISTCLEANFILES = @project_name@.pc
+DISTCLEANFILES += @project_name@.pc

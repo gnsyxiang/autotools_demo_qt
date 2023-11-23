@@ -25,6 +25,9 @@
 /* Define if the pthread has pthread_setname_np */
 #undef HAVE_PTHREAD_SETNAME_NP
 
+/* Define if the Qt framework is available. */
+#undef HAVE_QT
+
 /* select at32f4xx chip */
 #undef HAVE_SELECT_CHIP_AT32F4XX
 

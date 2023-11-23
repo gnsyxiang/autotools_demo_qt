@@ -42,6 +42,7 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 # AC_PROG_RANLIB
 
+AT_WITH_QT
 CHECK_LIBCUNIT
 
 # Checks for libraries.
@@ -77,6 +78,9 @@ AC_CONFIG_FILES([Makefile
                  example/Makefile
                  include/Makefile
                  res/Makefile
+                 res/img/Makefile
+                 res/qss/Makefile
+                 res/ui/Makefile
                  res/voice/Makefile
                  res/voice/cn/Makefile
                  res/voice/en/Makefile

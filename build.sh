@@ -149,7 +149,7 @@ select_build_version()
 get_com_config()
 {
     cppflag="${cppflag} -pipe"
-    cppflag="${cppflag} -W -Wall -Werror"
+    cppflag="${cppflag} -W -Wall -Werror=all"
     cppflag="${cppflag} -ffunction-sections"
     cppflag="${cppflag} -fdata-sections"
     cppflag="${cppflag} -Wno-error=unused-parameter -Wno-unused-parameter"

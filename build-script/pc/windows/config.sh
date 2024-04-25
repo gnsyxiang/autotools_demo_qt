@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-chip=ubuntu
+chip=windows
 
-os=linux
+os=windows
 
 product=HY-pc
 
@@ -16,9 +16,9 @@ configure_param=
 cppflag=
 cflag=
 cxxflag=
-ldflag=-rdynamic
+ldflag=
 lib=
 debug=-ggdb -g -O0 -fstack-protector-all
 release=-O2 -DNDEBUG
 
-install_path=/mnt/nfs/pc/ubuntu
+install_path=/mnt/nfs/pc/windows

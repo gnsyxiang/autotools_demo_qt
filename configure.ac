@@ -58,12 +58,9 @@ AC_FUNC_MALLOC
 AC_CONFIG_FILES([Makefile
                  $project_name.pc
                  build-script/Makefile
-                 build-script/fullhan/MC6810E/Makefile
-                 build-script/fullhan/Makefile
-                 build-script/nxp/Makefile
-                 build-script/nxp/mx6ull/Makefile
                  build-script/pc/Makefile
                  build-script/pc/ubuntu/Makefile
+                 build-script/pc/windows/Makefile
                  build-script/rock-chips/Makefile
                  build-script/rock-chips/rk3568/Makefile
                  doc/Makefile

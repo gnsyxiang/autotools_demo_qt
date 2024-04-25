@@ -2,6 +2,8 @@
 
 chip=rk3568
 
+os=linux
+
 product=rock-chips
 
 language=cn en
@@ -11,12 +13,12 @@ cross_gcc_path=/opt/toolchains/rock-chips/rk3568/gcc-linaro-6.3.1-2017.05-x86_64
 
 configure_param=
 
-cppflag=-fstack-protector-all
+cppflag=
 cflag=
 cxxflag=
 ldflag=-rdynamic
 lib=
-debug=-g -O0
+debug=-ggdb -g -O0 -fstack-protector-all
 release=-O2 -DNDEBUG
 
 install_path=/mnt/nfs/rock-chips/rk3568

@@ -28,29 +28,14 @@
 /* Define if the Qt framework is available. */
 #undef HAVE_QT
 
-/* select at32f4xx chip */
-#undef HAVE_SELECT_CHIP_AT32F4XX
-
-/* select esp32 chip */
-#undef HAVE_SELECT_CHIP_ESP32
-
-/* select MC6810E chip */
-#undef HAVE_SELECT_CHIP_MC6810E
-
-/* select mx6ull chip */
-#undef HAVE_SELECT_CHIP_MX6ULL
-
-/* select pc chip */
-#undef HAVE_SELECT_CHIP_PC
-
 /* select rk3568 chip */
 #undef HAVE_SELECT_CHIP_RK3568
 
-/* select stm32h7xx chip */
-#undef HAVE_SELECT_CHIP_STM32H7XX
+/* select ubuntu chip */
+#undef HAVE_SELECT_CHIP_UBUNTU
 
-/* select SV823 chip */
-#undef HAVE_SELECT_CHIP_SV823
+/* select windows chip */
+#undef HAVE_SELECT_CHIP_WINDOWS
 
 /* select cn language */
 #undef HAVE_SELECT_LANGUAGE_CN
@@ -58,32 +43,17 @@
 /* select en language */
 #undef HAVE_SELECT_LANGUAGE_EN
 
-/* select arterytek vender */
-#undef HAVE_SELECT_VENDER_ARTERYTEK
+/* select linux os */
+#undef HAVE_SELECT_OS_LINUX
 
-/* select eeasytech vender */
-#undef HAVE_SELECT_VENDER_EEASYTECH
-
-/* select esp32 vender */
-#undef HAVE_SELECT_VENDER_ESP32
-
-/* select fullhan vender */
-#undef HAVE_SELECT_VENDER_FULLHAN
-
-/* select hdhc vender */
-#undef HAVE_SELECT_VENDER_HDHC
-
-/* select nxp vender */
-#undef HAVE_SELECT_VENDER_NXP
+/* select windows os */
+#undef HAVE_SELECT_OS_WINDOWS
 
 /* select pc vender */
 #undef HAVE_SELECT_VENDER_PC
 
 /* select rock-chips vender */
 #undef HAVE_SELECT_VENDER_ROCK_CHIPS
-
-/* select stm32 vender */
-#undef HAVE_SELECT_VENDER_STM32
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H

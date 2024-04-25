@@ -60,10 +60,10 @@ _ldadd_com      += \
                    $(top_builddir)/src/lib@project_name@.la \
                    $(ldadd_com)
 
-bin_PROGRAMS        += HyQtDemo
-HyQtDemo_SOURCES    = $(_sources_com) HyQtDemo.cpp
-HyQtDemo_CPPFLAGS   = $(_cppflags_com)
-HyQtDemo_CFLAGS     = $(_cflags_com)
-HyQtDemo_CXXFLAGS   = $(_cxxflags_com)
-HyQtDemo_LDFLAGS    = $(_ldflags_com)
-HyQtDemo_LDADD      = $(_ldadd_com)
+bin_PROGRAMS        += hy_qt_demo
+hy_qt_demo_SOURCES    = $(_sources_com) hy_qt_demo.cpp
+hy_qt_demo_CPPFLAGS   = $(_cppflags_com)
+hy_qt_demo_CFLAGS     = $(_cflags_com)
+hy_qt_demo_CXXFLAGS   = $(_cxxflags_com)
+hy_qt_demo_LDFLAGS    = $(_ldflags_com)
+hy_qt_demo_LDADD      = $(_ldadd_com)

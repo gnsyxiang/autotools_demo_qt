@@ -94,5 +94,5 @@ autotools_demo_qt.pc
 *.lo
 *.la
 
-
-
+hy_*_demo
+hy_*_test

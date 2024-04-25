@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chip=pc-chip
+chip=ubuntu
 
 product=HY-pc
 
@@ -9,7 +9,7 @@ language=cn en
 host=
 cross_gcc_path=
 
-configure_param=
+configure_param=--disable-silent-rules
 
 cppflag=-fstack-protector-all
 cflag=
@@ -19,5 +19,5 @@ lib=
 debug=-g -O0
 release=-O2 -DNDEBUG
 
-install_path=/mnt/nfs/pc/pc-chip
+install_path=/mnt/nfs/pc/ubuntu
 

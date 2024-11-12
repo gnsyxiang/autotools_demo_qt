@@ -43,4 +43,3 @@ EXTRA_DIST          = $(_dist_file_com)
 # ------------------
 _install_files_com  += demo.pcm
 voice_DATA          += $(_install_files_com)
-

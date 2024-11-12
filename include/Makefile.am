@@ -40,7 +40,7 @@ _sources_com    += $(_qt_h_files)
 
 _cppflags_com   += \
                    $(_no_error_com) \
-                   $(_include_com)  \
+                   $(_include_com) \
                    $(_define_com)
 
 _cflags_com     +=

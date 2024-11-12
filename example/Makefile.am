@@ -47,7 +47,7 @@ _sources_com    +=
 
 _cppflags_com   += \
                    $(_no_error_com) \
-                   $(_include_com)  \
+                   $(_include_com) \
                    $(_define_com)
 
 _cflags_com     +=
@@ -61,9 +61,9 @@ _ldadd_com      += \
                    $(ldadd_com)
 
 bin_PROGRAMS        += hy_qt_demo
-hy_qt_demo_SOURCES    = $(_sources_com) hy_qt_demo.cpp
-hy_qt_demo_CPPFLAGS   = $(_cppflags_com)
-hy_qt_demo_CFLAGS     = $(_cflags_com)
-hy_qt_demo_CXXFLAGS   = $(_cxxflags_com)
-hy_qt_demo_LDFLAGS    = $(_ldflags_com)
-hy_qt_demo_LDADD      = $(_ldadd_com)
+hy_qt_demo_SOURCES  = $(_sources_com) hy_qt_demo.cpp
+hy_qt_demo_CPPFLAGS = $(_cppflags_com)
+hy_qt_demo_CFLAGS   = $(_cflags_com)
+hy_qt_demo_CXXFLAGS = $(_cxxflags_com)
+hy_qt_demo_LDFLAGS  = $(_ldflags_com)
+hy_qt_demo_LDADD    = $(_ldadd_com)
